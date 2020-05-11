@@ -13,52 +13,18 @@
       </div>
       <div class="cards-container">
         <div class="cards-list">
-          <div class="card-col">
-            <Card
-              class="card-wrapper"
-              :title="getCard(0).title"
-              :message="getCard(0).message"
-              :accentColor="getCard(0).accentColor"
-            >
-              <template slot="image">
-                <img :src="getCard(0).image" :alt="getCard(0).title" />
-              </template>
-            </Card>
-          </div>
-          <div class="card-col">
-            <Card
-              class="card-wrapper"
-              :title="getCard(1).title"
-              :message="getCard(1).message"
-              :accentColor="getCard(1).accentColor"
-            >
-              <template slot="image">
-                <img :src="getCard(1).image" :alt="getCard(1).title" />
-              </template>
-            </Card>
-            <Card
-              class="card-wrapper"
-              :title="getCard(2).title"
-              :message="getCard(2).message"
-              :accentColor="getCard(2).accentColor"
-            >
-              <template slot="image">
-                <img :src="getCard(2).image" :alt="getCard(2).title" />
-              </template>
-            </Card>
-          </div>
-          <div class="card-col">
-            <Card
-              class="card-wrapper"
-              :title="getCard(3).title"
-              :message="getCard(3).message"
-              :accentColor="getCard(3).accentColor"
-            >
-              <template slot="image">
-                <img :src="getCard(3).image" :alt="getCard(3).title" />
-              </template>
-            </Card>
-          </div>
+          <Card
+            class="card-wrapper"
+            v-for="card in cards"
+            :key="card.title"
+            :title="card.title"
+            :message="card.message"
+            :accentColor="card.accentColor"
+          >
+            <template slot="image">
+              <img :src="card.image" :alt="card.title" />
+            </template>
+          </Card>
         </div>
       </div>
     </main>
@@ -165,14 +131,13 @@ export default {
 }
 
 .cards-container {
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
 .cards-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 2rem;
+  display: grid;
 }
 
 .card-wrapper {
@@ -182,18 +147,23 @@ export default {
 
 @media screen and (min-width: 1240px) {
   .cards-list {
-    flex-direction: row;
-    align-items: center;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 32px;
   }
 
-  .cards-container {
-    display: flex;
-    justify-content: center;
+  .card-wrapper:nth-child(1),
+  .card-wrapper:nth-child(4) {
+    grid-row: 1 / span 2;
+    align-self: center;
   }
 
-  .card-col:nth-child(2) {
-    margin-left: 32px;
-    margin-right: 32px;
+  .card-wrapper:nth-child(1) {
+    grid-column: 1;
+  }
+
+  .card-wrapper:nth-child(4) {
+    grid-column: 3;
   }
 }
 </style>
