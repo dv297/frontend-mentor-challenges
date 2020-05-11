@@ -32,11 +32,11 @@
 </template>
 
 <script>
-import Card from "@/views/challenges/components/Card";
-import teamBuilderImage from "@/views/challenges/images/icon-team-builder.svg";
-import superVisorImage from "@/views/challenges/images/icon-supervisor.svg";
-import calculatorImage from "@/views/challenges/images/icon-calculator.svg";
-import karmaImage from "@/views/challenges/images/icon-karma.svg";
+import Card from "@/views/challenges/FourCard/components/Card";
+import teamBuilderImage from "@/views/challenges/FourCard/images/icon-team-builder.svg";
+import superVisorImage from "@/views/challenges/FourCard/images/icon-supervisor.svg";
+import calculatorImage from "@/views/challenges/FourCard/images/icon-calculator.svg";
+import karmaImage from "@/views/challenges/FourCard/images/icon-karma.svg";
 
 export default {
   name: "FourCard",

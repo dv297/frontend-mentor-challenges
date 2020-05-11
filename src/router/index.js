@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import FourCard from "@/views/challenges/FourCard";
+import FourCard from "@/views/challenges/FourCard/FourCard";
 
 Vue.use(VueRouter);
 
