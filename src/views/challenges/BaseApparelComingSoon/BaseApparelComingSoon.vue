@@ -15,7 +15,27 @@
         Add your email below to stay up-to-date with announcements and our
         launch deals.
       </p>
-      <EmailInput />
+      <form class="email-input-container" @submit="validateEmail">
+        <input
+          v-model="email"
+          type="text"
+          placeholder="Email Address"
+          class="email-input"
+        />
+        <button class="submit-button" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20">
+            <path
+              fill="none"
+              stroke="#FFF"
+              stroke-width="2"
+              d="M1 1l8.836 8.836L1 18.671"
+            />
+          </svg>
+        </button>
+        <div class="error-message" v-if="hasError">
+          Please provide a valid email
+        </div>
+      </form>
     </main>
   </div>
 </template>
@@ -24,14 +44,20 @@
 import "reset-css";
 import logo from "./assets/logo.svg";
 
-import EmailInput from "@/views/challenges/BaseApparelComingSoon/components/EmailInput";
 export default {
   name: "BaseApparelComingSoon",
-  components: { EmailInput },
   data() {
     return {
-      logo
+      logo,
+      hasError: false,
+      email: null
     };
+  },
+  methods: {
+    validateEmail(event) {
+      event.preventDefault();
+      this.hasError = !this.email.length || this.email.indexOf("@") === -1;
+    }
   }
 };
 </script>
@@ -158,5 +184,48 @@ export default {
   .content {
     padding-left: 128px;
   }
+}
+
+.email-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.email-input {
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid hsl(0, 36%, 70%);
+  line-height: 2.5rem;
+  border-radius: 32px;
+  padding-left: 24px;
+  padding-right: 48px;
+  width: 100%;
+}
+
+.email-input::placeholder {
+  font-weight: 600;
+  color: hsla(0, 36%, 70%, 0.5);
+}
+
+.submit-button {
+  position: absolute;
+  top: 0;
+  right: -24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.8rem;
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  line-height: 2.5rem;
+  width: 64px;
+  border-radius: 32px;
+  border-style: none;
+  box-shadow: 2px 10px 10px 5px rgba(248, 191, 191, 0.2);
+}
+
+.error-message {
+  margin-top: 12px;
+  margin-left: 24px;
+  color: hsl(0, 77%, 73%);
 }
 </style>
