@@ -65,16 +65,6 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
 
-:root {
-  --desaturated-red: hsl(0, 36%, 70%);
-  --softish-red: hsl(0, 93%, 68%);
-
-  --dark-grayish-red: hsl(0, 6%, 24%);
-
-  --gradient1: Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%);
-  --gradient2: Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%);
-}
-
 .application * {
   box-sizing: border-box;
 }
@@ -83,13 +73,15 @@ export default {
   width: 100vw;
   min-height: 100vh;
   font-family: "Josefin Sans", sans-serif;
-  background-color: #fff4f4;
   font-size: 16px;
   padding-bottom: 48px;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content min-content 1fr;
+
+  background: url("./assets/bg-pattern-desktop.svg");
+  background-size: cover;
 }
 
 .header {
@@ -138,8 +130,6 @@ export default {
 
 @media screen and (min-width: 800px) {
   .application {
-    background: url("./assets/bg-pattern-desktop.svg");
-    background-size: contain;
     grid-template-columns: 1fr min-content;
     grid-template-rows: min-content 1fr;
     padding-bottom: 0;
@@ -154,7 +144,6 @@ export default {
   .content {
     grid-row: 2;
     grid-column: 1;
-    background: none;
     height: 100%;
     display: flex;
     flex-direction: column;
